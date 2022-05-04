@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2021.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxGuiToolkit.Questions.Tab.Tab">
+        <Position x="0" y="0" width="59" height="59" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroInput.MacroInput">
+        <Position x="54" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UseFileInput value="False" />
+          <Name>Input</Name>
+          <Abbrev />
+          <ShowFieldMap value="True" />
+          <Optional value="False" />
+          <TextInput>
+            <Configuration>
+              <NumRows value="10" />
+              <Fields>
+                <Field name="ID" />
+                <Field name="Related ID" />
+                <Field name="Original ID" />
+                <Field name="Type" />
+              </Fields>
+              <Data>
+                <r>
+                  <c>111</c>
+                  <c>0</c>
+                  <c>111</c>
+                  <c>Original</c>
+                </r>
+                <r>
+                  <c>112</c>
+                  <c>0</c>
+                  <c>112</c>
+                  <c>Original</c>
+                </r>
+                <r>
+                  <c>113</c>
+                  <c>0</c>
+                  <c>113</c>
+                  <c>Original</c>
+                </r>
+                <r>
+                  <c>114</c>
+                  <c>0</c>
+                  <c>114</c>
+                  <c>Original</c>
+                </r>
+                <r>
+                  <c>115</c>
+                  <c>0</c>
+                  <c>115</c>
+                  <c>Original</c>
+                </r>
+                <r>
+                  <c>116</c>
+                  <c>111</c>
+                  <c />
+                  <c />
+                </r>
+                <r>
+                  <c>117</c>
+                  <c>111</c>
+                  <c />
+                  <c />
+                </r>
+                <r>
+                  <c>118</c>
+                  <c>112</c>
+                  <c />
+                  <c />
+                </r>
+                <r>
+                  <c>119</c>
+                  <c>116</c>
+                  <c />
+                  <c />
+                </r>
+                <r>
+                  <c>120</c>
+                  <c>119</c>
+                  <c />
+                  <c />
+                </r>
+              </Data>
+            </Configuration>
+          </TextInput>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Input</DefaultAnnotationText>
+          <Left value="True" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="8" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="150" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Operator>IsNotNull</Operator>
+            <Field>Original ID</Field>
+            <Operands>
+              <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+              <DateType>fixed</DateType>
+              <PeriodDate>2022-05-04 10:54:48</PeriodDate>
+              <PeriodType>
+              </PeriodType>
+              <PeriodCount>0</PeriodCount>
+              <StartDate>2022-05-04 10:54:48</StartDate>
+              <EndDate>2022-05-04 10:54:48</EndDate>
+              <Operand>
+              </Operand>
+            </Operands>
+          </Simple>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>!IsNull([Original ID])</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="True">
+          <RecordInfo>
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="8" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="False">
+          <RecordInfo>
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="8" source="TextInput:" type="String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="270" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="ID" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="Related ID" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Left_Original ID" selected="True" input="Left_" />
+                <SelectField field="Right_ID" selected="True" input="Right_" />
+                <SelectField field="Right_Related ID" selected="True" input="Right_" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Left">
+          <RecordInfo>
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="8" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="ID" />
+          </SortInfo>
+        </MetaInfo>
+        <MetaInfo connection="Join">
+          <RecordInfo>
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+          </RecordInfo>
+        </MetaInfo>
+        <MetaInfo connection="Right">
+          <RecordInfo>
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="8" source="TextInput:" type="String" />
+          </RecordInfo>
+          <SortInfo noProgress="True">
+            <Field field="Related ID" />
+          </SortInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="378" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="ToString([Engine.IterationNumber]+1,0)+&quot;. layer&quot;" field="Type" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[Type = ToString([Engine.IterationNumber]+1,0)+". layer"
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="1073741823" source="Formula: ToString([Engine.IterationNumber]+1,0)+&quot;. layer&quot;" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+        <Position x="594" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Name>Outer right join</Name>
+          <Abbrev>O</Abbrev>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Outer right join</Name>
+          <DefaultAnnotationText>O Output</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="486" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Ignore</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="True" />
+          <OutputOrder>
+            <Connection>#1</Connection>
+            <Connection>#2</Connection>
+          </OutputOrder>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Original ID" source="TextInput:" type="Byte" />
+            <Field name="ID" source="TextInput:" type="Byte" />
+            <Field name="Related ID" source="TextInput:" type="Byte" />
+            <Field name="Type" size="1073741823" source="(Multiple Sources)" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.MacroOutput.MacroOutput">
+        <Position x="486" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Name>Joined</Name>
+          <Abbrev>J</Abbrev>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>Joined</Name>
+          <DefaultAnnotationText>J Output</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxMacroOutput" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="True" />
+      <Destination ToolID="5" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="False" />
+      <Destination ToolID="5" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Join" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="5" Connection="Right" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <Constants>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Macro Input (2)</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Outer right join</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+      <Constant>
+        <Namespace>Question</Namespace>
+        <Name>Joined</Name>
+        <Value />
+        <IsNumeric value="False" />
+      </Constant>
+    </Constants>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>invoice_iteration_example</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="bc7693ed-91d7-412e-8e29-c8d70c63615e" />
+      <Telemetry>
+        <PreviousWorkflowId value="a0a0822a-7ac3-4145-943a-1ba22c41609a" />
+        <OriginWorkflowId value="a0a0822a-7ac3-4145-943a-1ba22c41609a" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="False" />
+    </Events>
+    <RuntimeProperties>
+      <Actions />
+      <Questions>
+        <Question>
+          <Type>Tab</Type>
+          <Description>Questions</Description>
+          <Name>Tab (1)</Name>
+          <ToolId value="1" />
+          <Questions>
+            <Question>
+              <Type>MacroInput</Type>
+              <Description>Macro Input (2)</Description>
+              <Name>Macro Input (2)</Name>
+              <ToolId value="2" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Outer right join</Description>
+              <Name>Outer right join</Name>
+              <ToolId value="7" />
+            </Question>
+            <Question>
+              <Type>MacroOutput</Type>
+              <Description>Joined</Description>
+              <Name>Joined</Name>
+              <ToolId value="9" />
+            </Question>
+          </Questions>
+        </Question>
+      </Questions>
+      <ModuleType>Macro</ModuleType>
+      <MacroCustomHelp value="False" />
+      <MacroDynamicOutputFields value="False" />
+      <MacroImageStd value="39" />
+      <MacroInputs />
+      <MacroOutputs />
+      <IterativeMacro>
+        <Input>Input</Input>
+        <Output>Outer right join</Output>
+        <IterationLimit value="10" />
+        <LimitBehavior>Ignore</LimitBehavior>
+        <OutputMode>AllSame</OutputMode>
+      </IterativeMacro>
+      <Wiz_CustomHelp value="False" />
+      <Wiz_CustomGraphic value="False" />
+      <Wiz_ShowOutput value="True" />
+      <Wiz_OpenOutputTools>
+        <Tool ToolId="2" Selected="True" />
+        <Tool ToolId="7" Selected="True" />
+        <Tool ToolId="9" Selected="True" />
+      </Wiz_OpenOutputTools>
+      <Wiz_OutputMessage />
+      <Wiz_NoOutputFilesMessage />
+      <Wiz_ChainRunWizard />
+    </RuntimeProperties>
+  </Properties>
+</AlteryxDocument>
